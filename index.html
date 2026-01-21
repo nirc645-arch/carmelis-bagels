@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כרמלי'ס בייגלס - משלוחים מהירים</title>
+    <meta name="description" content="הזמן משלוחים מהירים של בייגלים טריים, סלטים בריאים וכריכים טעימים היישר לביתך">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="css/styles.css?v=4" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <img src="images/reallogo.png" alt="Carmeli's Bagel Bakery" class="loading-logo">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/reallogo.png" alt="כרמלי'ס בייגלס" class="navbar-logo">
+                <span class="brand-text">כרמלי'ס בייגלס</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured">מומלץ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">אודות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">צור קשר</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-clock text-success me-1"></i>
+                        <span class="small">זמן משלוח: 25-35 דק</span>
+                    </div>
+                    <div class="me-3" data-bs-toggle="modal" data-bs-target="#cartModal" style="cursor: pointer;">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span id="cart-count" class="badge rounded-pill">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Development Notice Banner -->
+    <div class="alert alert-warning text-center py-3 mb-0" role="alert">
+        <i class="fas fa-tools me-2"></i>
+        <strong>האתר כרגע בבניה אין לנסות להזמין ממנו (:)</strong>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Carmeli's Bagel Bakery</h1>
+                    <p class="lead mb-4">
+                        הזמן עכשיו והתענג על בייגלים טריים, סלטים בריאים וכריכים טעימים
+                        שמגיעים חמים וטריים עד לפתח ביתך!
+                    </p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#featured" class="btn btn-primary btn-lg">
+                            <i class="fas fa-utensils me-2"></i>הזמן עכשיו
+                        </a>
+                        <a href="menu.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-list me-2"></i>צפה בתפריט
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="images/reallogo.png" alt="כרמלי'ס בייגלס" class="img-fluid rounded-3 shadow-lg hero-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Featured Items Section -->
+    <section id="featured" class="featured-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>המומלצים שלנו</h2>
+                <p>המנות הפופולריות ביותר שהלקוחות שלנו אוהבים</p>
+            </div>
+
+            <div class="featured-grid">
+                <div class="featured-card" style="--i: 0">
+                    <img src="images/פילה סלמון פירה ושעועית.avif" alt="פילה סלמון">
+                    <div class="card-body">
+                        <h5>פילה סלמון עם פירה ושעועית</h5>
+                        <p>סלמון טרי בתנור עם פירה תפוחי אדמה ושעועית ירוקה</p>
+                        <div class="price">₪46.20</div>
+                        <button class="btn btn-primary w-100 add-to-cart" data-name="פילה סלמון, פירה ושעועית" data-price="46.20">
+                            <i class="fas fa-cart-plus me-2"></i>הוסף לעגלה
+                        </button>
+                    </div>
+                </div>
+
+                <div class="featured-card" style="--i: 1">
+                    <img src="images/_מבצע בייגלים 10 + 1 🥯.avif" alt="מבצע בייגלים">
+                    <div class="card-body">
+                        <h5>מבצע בייגלים 10 + 1</h5>
+                        <p>קבל בייגל חינם על כל 10 בייגלים! הטוב ביותר למשפחה</p>
+                        <div class="price">₪52.50</div>
+                        <button class="btn btn-primary w-100 add-to-cart" data-name="_מבצע בייגלים 10 + 1 🥯" data-price="52.50">
+                            <i class="fas fa-cart-plus me-2"></i>הוסף לעגלה
+                        </button>
+                    </div>
+                </div>
+
+                <div class="featured-card" style="--i: 2">
+                    <img src="images/סלט אבוקדו טרי ישראלי.avif" alt="סלט אבוקדו">
+                    <div class="card-body">
+                        <h5>סלט אבוקדו טרי ישראלי</h5>
+                        <p>סלט אבוקדו טרי עם ירקות עונתיים ותבלינים מיוחדים</p>
+                        <div class="price">₪19.60</div>
+                        <button class="btn btn-primary w-100 add-to-cart" data-name="סלט אבוקדו טרי ישראלי" data-price="19.60">
+                            <i class="fas fa-cart-plus me-2"></i>הוסף לעגלה
+                        </button>
+                    </div>
+                </div>
+
+                <div class="featured-card" style="--i: 3">
+                    <img src="images/בייגל אבוקדו (טבעוני).avif" alt="בייגל אבוקדו">
+                    <div class="card-body">
+                        <h5>בייגל אבוקדו (טבעוני)</h5>
+                        <p>בייגל טרי עם אבוקדו טרי, עגבניות ושקדים</p>
+                        <div class="price">₪29.40</div>
+                        <button class="btn btn-primary w-100 add-to-cart" data-name="בייגל אבוקדו (טבעוני)" data-price="29.40">
+                            <i class="fas fa-cart-plus me-2"></i>הוסף לעגלה
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="fas fa-shopping-cart me-2"></i>העגלה שלי
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cartItems">
+                    <!-- Cart items will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-arrow-left me-2"></i>המשך קניות
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-credit-card me-2"></i>הזמן עכשיו
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-utensils me-2"></i>כרמלי'ס בייגלס</h4>
+                    <p>בייגלים טריים, סלטים בריאים וכריכים טעימים - משלוח עד הבית!</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/972503330348" class="me-3" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>קישורים מהירים</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">בית</a></li>
+                        <li><a href="#featured">מומלץ</a></li>
+                        <li><a href="menu.html">תפריט מלא</a></li>
+                        <li><a href="#about">אודות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>שירות לקוחות</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#contact">צור קשר</a></li>
+                        <li><a href="#">שאלות נפוצות</a></li>
+                        <li><a href="#">מדיניות משלוחים</a></li>
+                        <li><a href="#">תנאי שימוש</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>פרטי התקשרות</h4>
+                    <p><i class="fas fa-phone me-2"></i>03-547-2844</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@carmelis.co.il</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>בן אביגדור 3, תל אביב-יפו</p>
+                    <div class="opening-hours">
+                        <p><i class="fas fa-clock me-2"></i><strong>שעות פתיחה:</strong></p>
+                        <ul class="list-unstyled small">
+                            <li>יום שבת: סגור</li>
+                            <li>יום ראשון: 9:00–18:00</li>
+                            <li>יום שני: 9:00–21:00</li>
+                            <li>יום שלישי: 9:00–21:00</li>
+                            <li>יום רביעי: 9:00–21:00</li>
+                            <li>יום חמישי: 9:00–21:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 כרמלי'ס בייגלס. כל הזכויות שמורות. | אתר זה נבנה באהבה 🚚</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972503330348" class="whatsapp-float" target="_blank" aria-label="צור קשר בוואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

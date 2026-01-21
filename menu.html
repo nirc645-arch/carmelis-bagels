@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כרמלי'ס בייגלס - תפריט מלא</title>
+    <meta name="description" content="תפריט מלא של בייגלים טריים, סלטים בריאים וכריכים טעימים">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">כרמלי'ס בייגלס</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">אודות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">צור קשר</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-clock text-success me-1"></i>
+                        <span class="small">זמן משלוח: 25-35 דק</span>
+                    </div>
+                    <div class="me-3" data-bs-toggle="modal" data-bs-target="#cartModal" style="cursor: pointer;">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span id="cart-count" class="badge rounded-pill">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">העגלה שלי</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cartItems">
+                    <!-- Cart items will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+                    <button type="button" class="btn btn-primary">הזמן עכשיו</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Header -->
+    <section class="menu-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>התפריט המלא שלנו</h1>
+                <p>גלה את כל המנות הטעימות שלנו - בחר לפי קטגוריה או חפש את מה שאתה אוהב</p>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="menu-container">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            <input type="text" id="menuSearch" class="form-control" placeholder="חפש מנה...">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-filters">
+                            <button class="filter-btn active" data-filter="all">הכל</button>
+                            <button class="filter-btn" data-filter="salads">סלטים</button>
+                            <button class="filter-btn" data-filter="main-dishes">מהמטבח</button>
+                            <button class="filter-btn" data-filter="sandwiches">כריכים/בייגלים</button>
+                            <button class="filter-btn" data-filter="toasts">טוסטים</button>
+                            <button class="filter-btn" data-filter="deli">מהמעדניה</button>
+                            <button class="filter-btn" data-filter="platters">מגשים</button>
+                            <button class="filter-btn" data-filter="drinks">שתייה</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-grid" id="menuGrid">
+<div class="menu-category" id="main-dishes">
+    <h3><i class="fas fa-utensils me-2"></i>מהמטבח</h3>
+    <div class="menu-item">
+        <div class="price">₪142.00</div>
+        <img src="images/ניגובים בעמ.avif" alt="" class="menu-img">
+        <h5>ניגובים בע"מ</h5>
+        <p>ארוחה כיפית וטעימה הכוללת 4 סוגים של ממרחים או סלטים לבחירה (250 גרם כל אחד), 3 בייגלים ריקים, צלחת ירקות טריים ורטבים מתאיים ל-3 סועדים</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ניגובים בע\"מ" data-price="142.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪59.00</div>
+        <img src="images/ארוחת בוקר.avif" alt="" class="menu-img">
+        <h5>ארוחת בוקר</h5>
+        <p>ארוחת בוקר ליחיד הכוללת חביתה מ-2 ביצים, 2 תוספות בצד לבחירה, סלט ירקות טרי, בייגל אמריקאי, רטבים, חמאה וריבה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ארוחת בוקר" data-price="59.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪59.00</div>
+        <img src="images/ארוחת שקשוקה.avif" alt="" class="menu-img">
+        <h5>ארוחת שקשוקה</h5>
+        <p>‫שקשוקה מ-2 ביצים ברוטב עגבניות ביתי, סלט ירקות קצוץ טרי (חסה, עגבנייה, מלפפון, כרוב וגזר) מוגש עם טחינה, זיתי קלמטה ובייגל לבחירה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ארוחת שקשוקה" data-price="59.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪66.00</div>
+        <img src="images/פילה סלמון פירה ושעועית.avif" alt="" class="menu-img">
+        <h5>פילה סלמון, פירה ושעועית</h5>
+        <p>פילה סלמון נורווגי (200 גרם) מוגש עם פירה קטיפתי (חלבי) ושעועית ירוקה מוקפצת</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פילה סלמון, פירה ושעועית" data-price="66.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪39.00</div>
+        <img src="images/סלמון נורווגי אפוי.avif" alt="" class="menu-img">
+        <h5>סלמון נורווגי אפוי</h5>
+        <p>אפוי במרינדה של טריאקי, שמן זית, שום כתוש, מלח ופלפל שחור - 200 גרם (פילה אחד)</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלמון נורווגי אפוי" data-price="39.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪59.00</div>
+        <img src="images/ארוחת קיש.avif" alt="" class="menu-img">
+        <h5>ארוחת קיש</h5>
+        <p>קיש אישי לבחירה מוגש עם סלט ירקות אישי, רוטב, ממרח אבוקדו וגבינת שמנת</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ארוחת קיש" data-price="59.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪39.00</div>
+        <img src="images/קיש אישי.avif" alt="" class="menu-img">
+        <h5>קיש אישי</h5>
+        <p>קיש אישי לבחירה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="קיש אישי" data-price="39.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="sandwiches">
+    <h3><i class="fas fa-sandwich me-2"></i>כריכים / בייגלים</h3>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/כריך בהרכבה.avif" alt="" class="menu-img">
+        <h5>כריך בהרכבה</h5>
+        <p>מוגש עם 2 תוספות, רטבים וירקות</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="כריך בהרכבה" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪40.00</div>
+        <img src="images/בייגל חביתה.avif" alt="" class="menu-img">
+        <h5>בייגל חביתה</h5>
+        <p>שמנת, עגבניה, מלפפון, חסה וחביתה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל חביתה" data-price="40.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪75.00</div>
+        <img src="images/_מבצע בייגלים 10 + 1 🥯.avif" alt="" class="menu-img">
+        <h5>_מבצע בייגלים 10 + 1 🥯</h5>
+        <p>בקניית 10 בייגלים מקבלים בייגל חינם! בחרו סוג בייגל</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="_מבצע בייגלים 10 + 1 🥯" data-price="75.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪46.00</div>
+        <img src="images/בייגל שמנת סלמון.avif" alt="" class="menu-img">
+        <h5>בייגל שמנת סלמון</h5>
+        <p>גבינת שמנת, עלי בייבי, בצל סגול, צלפים וסלמון מעושן *ללא מלפפון, ללא זיתים</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל שמנת סלמון" data-price="46.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/בייגל סלט טונה וביצה.avif" alt="" class="menu-img">
+        <h5>בייגל סלט טונה וביצה</h5>
+        <p>סלט הטונה המפורסם של כרמליס, ביצה קשה, פלפל קלוי, עלי בייבי ורוטב שום</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל סלט טונה וביצה" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪48.00</div>
+        <img src="images/בייגל סלמון עין.avif" alt="" class="menu-img">
+        <h5>בייגל סלמון עין</h5>
+        <p>גבינת שמנת שום שמיר, ביצת עין הפוכה, בצל סגול, זיתים ירוקים, עלי בייבי וסלמון מעושן *ללא מלפפון</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל סלמון עין" data-price="48.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/בייגל סלט ביצים.avif" alt="" class="menu-img">
+        <h5>בייגל סלט ביצים</h5>
+        <p>סלט ביצים טרי, חצילים קלויים, עגבניה, מלפפון חמוץ ועלי בייבי</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל סלט ביצים" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/בייגל סביח.avif" alt="" class="menu-img">
+        <h5>בייגל סביח</h5>
+        <p>‫טחינה, אריסה, מלפפון חמוץ, חצילים, עגבניה, ביצה קשה ופטרוזיליה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל סביח" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/בייגל אבוקדו (טבעוני).avif" alt="" class="menu-img">
+        <h5>בייגל אבוקדו (טבעוני)</h5>
+        <p>סלט מאבוקדו טרי, קוביות בטטה צלויה, פסטו בזיליקום, פלפל קלוי ובצל ירוק</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל אבוקדו (טבעוני)" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/בייגל בלקני.avif" alt="" class="menu-img">
+        <h5>בייגל בלקני</h5>
+        <p>גבינה בולגרית, פלפל קלוי, חציל קלוי, זוקיני קלוי, זיתים שחורים ופסטו בזיליקום</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="בייגל בלקני" data-price="42.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="toasts">
+    <h3><i class="fas fa-bread-slice me-2"></i>טוסטים</h3>
+    <div class="menu-item">
+        <div class="price">₪29.00</div>
+        <img src="images/טוסט נוטלה.avif" alt="" class="menu-img">
+        <h5>טוסט נוטלה</h5>
+        <p>הבייגל ההורס שלנו עם המון שוקולד נוטלה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט נוטלה" data-price="29.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט בהרכבה.avif" alt="" class="menu-img">
+        <h5>טוסט בהרכבה</h5>
+        <p>טוסט בהרכבה לפי בחירה, מוגש עם גבינה צהובה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט בהרכבה" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט הבית.avif" alt="" class="menu-img">
+        <h5>טוסט הבית</h5>
+        <p>גבינה צהובה, שמנת שום שמיר, ביצה קשה, זיתים ירוקים, בצל ירוק ורוטב פיצה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט הבית" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט יווני.avif" alt="" class="menu-img">
+        <h5>טוסט יווני</h5>
+        <p>עגבניה, זיתים שחורים, גבינה בולגרית, רוטב שום, פסטו וגבינה צהובה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט יווני" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט פיצה.avif" alt="" class="menu-img">
+        <h5>טוסט פיצה</h5>
+        <p>גבינה צהובה, רוטב פיצה, זיתים ירוקים ותירס</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט פיצה" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט טונה.avif" alt="" class="menu-img">
+        <h5>טוסט טונה</h5>
+        <p>גבינה צהובה, סלט הטונה של כרמליס, רוטב שום, ביצה קשה, בצל ירוק ופלפל קלוי</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט טונה" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט פסטו.avif" alt="" class="menu-img">
+        <h5>טוסט פסטו</h5>
+        <p>גבינה צהובה, גבינת שמנת, פסטו בזיליקום ועגבניה</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט פסטו" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/טוסט של פעם.avif" alt="" class="menu-img">
+        <h5>טוסט של פעם</h5>
+        <p>גבינה צהובה, חמאה, עגבניה וזיתים ירוקים</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טוסט של פעם" data-price="42.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="salads">
+    <h3><i class="fas fa-leaf me-2"></i>סלטים</h3>
+    <div class="menu-item">
+        <div class="price">₪52.00</div>
+        <img src="images/סלט בהרכבה.avif" alt="" class="menu-img">
+        <h5>סלט בהרכבה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט בהרכבה" data-price="52.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/סלט קינואה ( 1 ליטר).avif" alt="" class="menu-img">
+        <h5>סלט קינואה (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט קינואה (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/סלט יווני (1 ליטר).avif" alt="" class="menu-img">
+        <h5>סלט יווני (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט יווני (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/סלט ניסואז (1 ליטר).avif" alt="" class="menu-img">
+        <h5>סלט ניסואז (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט ניסואז (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/סלט פסטה - פסטו (1 ליטר).avif" alt="" class="menu-img">
+        <h5>סלט פסטה - פסטו (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט פסטה - פסטו (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/ירושלמי (1 ליטר).avif" alt="" class="menu-img">
+        <h5>ירושלמי (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ירושלמי (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/הטבעוני 🌱 (1 ליטר).avif" alt="" class="menu-img">
+        <h5>הטבעוני 🌱 (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="הטבעוני 🌱 (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪54.00</div>
+        <img src="images/סלט עדשים (1 ליטר).avif" alt="" class="menu-img">
+        <h5>סלט עדשים (1 ליטר)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט עדשים (1 ליטר)" data-price="54.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="deli">
+    <h3><i class="fas fa-store me-2"></i>מהמעדניה (250ג)</h3>
+    <div class="menu-item">
+        <div class="price">₪32.00</div>
+        <img src="images/ירקות טריים.avif" alt="" class="menu-img">
+        <h5>ירקות טריים</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ירקות טריים" data-price="32.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪34.00</div>
+        <img src="images/סלט טונה.avif" alt="" class="menu-img">
+        <h5>סלט טונה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט טונה" data-price="34.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪30.00</div>
+        <img src="images/סלט ביצים.avif" alt="" class="menu-img">
+        <h5>סלט ביצים</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט ביצים" data-price="30.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪28.00</div>
+        <img src="images/סלט אבוקדו טרי ישראלי.avif" alt="" class="menu-img">
+        <h5>סלט אבוקדו טרי ישראלי</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט אבוקדו טרי ישראלי" data-price="28.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪18.00</div>
+        <img src="images/טחינה.avif" alt="" class="menu-img">
+        <h5>טחינה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טחינה" data-price="18.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪26.00</div>
+        <img src="images/גבינת שמנת.avif" alt="" class="menu-img">
+        <h5>גבינת שמנת</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="גבינת שמנת" data-price="26.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪26.00</div>
+        <img src="images/כדורי מוצרלה.avif" alt="" class="menu-img">
+        <h5>כדורי מוצרלה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="כדורי מוצרלה" data-price="26.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/צפתית במליחות עדינה.avif" alt="" class="menu-img">
+        <h5>צפתית במליחות עדינה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="צפתית במליחות עדינה" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/קוביות גבינה בולגרית.avif" alt="" class="menu-img">
+        <h5>קוביות גבינה בולגרית</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="קוביות גבינה בולגרית" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/זיתי קלמטה ביין.avif" alt="" class="menu-img">
+        <h5>זיתי קלמטה ביין</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="זיתי קלמטה ביין" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/סלט סביח.avif" alt="" class="menu-img">
+        <h5>סלט סביח</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלט סביח" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪42.00</div>
+        <img src="images/סלמון נורווגי מעושן (250ג).avif" alt="" class="menu-img">
+        <h5>סלמון נורווגי מעושן (250ג)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלמון נורווגי מעושן (250ג)" data-price="42.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/גבינת לאבנה.avif" alt="" class="menu-img">
+        <h5>גבינת לאבנה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="גבינת לאבנה" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪28.00</div>
+        <img src="images/פרוסות גאודה.jpg" alt="" class="menu-img">
+        <h5>פרוסות גאודה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פרוסות גאודה" data-price="28.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪24.00</div>
+        <img src="images/עלי גפן.avif" alt="" class="menu-img">
+        <h5>עלי גפן</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="עלי גפן" data-price="24.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪18.00</div>
+        <img src="images/סלק מבושל.avif" alt="" class="menu-img">
+        <h5>סלק מבושל</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סלק מבושל" data-price="18.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪18.00</div>
+        <img src="images/קישואים אפויים בתנור.avif" alt="" class="menu-img">
+        <h5>קישואים אפויים בתנור</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="קישואים אפויים בתנור" data-price="18.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪22.00</div>
+        <img src="images/פלפלים קלויים בתנור.avif" alt="" class="menu-img">
+        <h5>פלפלים קלויים בתנור</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פלפלים קלויים בתנור" data-price="22.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪20.00</div>
+        <img src="images/קוביות חצילים קלויים בתנור.avif" alt="" class="menu-img">
+        <h5>קוביות חצילים קלויים בתנור</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="קוביות חצילים קלויים בתנור" data-price="20.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪22.00</div>
+        <img src="images/קוביות בטטה צלויה בתנור.avif" alt="" class="menu-img">
+        <h5>קוביות בטטה צלויה בתנור</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="קוביות בטטה צלויה בתנור" data-price="22.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪26.00</div>
+        <img src="images/ממרח פסטו בזיליקום.avif" alt="" class="menu-img">
+        <h5>ממרח פסטו בזיליקום</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ממרח פסטו בזיליקום" data-price="26.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪28.00</div>
+        <img src="images/טפנד זיתים.avif" alt="" class="menu-img">
+        <h5>טפנד זיתים</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="טפנד זיתים" data-price="28.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪28.00</div>
+        <img src="images/ממרח עגבניות מיובשות.avif" alt="" class="menu-img">
+        <h5>ממרח עגבניות מיובשות</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ממרח עגבניות מיובשות" data-price="28.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="desserts">
+    <h3><i class="fas fa-birthday-cake me-2"></i>קצת מתוק</h3>
+    <div class="menu-item">
+        <div class="price">₪20.00</div>
+        <img src="images/שלישיית פחזניות.avif" alt="" class="menu-img">
+        <h5>שלישיית פחזניות</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="שלישיית פחזניות" data-price="20.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪14.00</div>
+        <img src="images/עוגיית 3 סוגי שוקולד.avif" alt="" class="menu-img">
+        <h5>עוגיית 3 סוגי שוקולד</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="עוגיית 3 סוגי שוקולד" data-price="14.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪32.00</div>
+        <img src="images/פאי פקאן.avif" alt="" class="menu-img">
+        <h5>פאי פקאן</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פאי פקאן" data-price="32.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪4.00</div>
+        <img src="images/כדורי שוקולד וקוקוס - 1 יח׳.avif" alt="" class="menu-img">
+        <h5>כדורי שוקולד וקוקוס - 1 יח׳</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="כדורי שוקולד וקוקוס - 1 יח׳" data-price="4.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪4.00</div>
+        <img src="images/כדורי תמרים מצופים קוקוס.avif" alt="" class="menu-img">
+        <h5>כדורי תמרים מצופים קוקוס</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="כדורי תמרים מצופים קוקוס" data-price="4.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="platters">
+    <h3><i class="fas fa-birthday-cake me-2"></i>ישיבות ואירועים (מגשים)</h3>
+    <div class="menu-item">
+        <div class="price">₪238.00</div>
+        <img src="images/מגש כריכים (9 חצויים).avif" alt="" class="menu-img">
+        <h5>מגש כריכים (9 חצויים)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מגש כריכים (9 חצויים)" data-price="238.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪63.00</div>
+        <img src="images/ירקות חתוכים.avif" alt="" class="menu-img">
+        <h5>ירקות חתוכים</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="ירקות חתוכים" data-price="63.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪112.00</div>
+        <img src="images/סלמון נורווגי מעושן (500ג).avif" alt="" class="menu-img">
+        <h5>מגש סלמון נורווגי מעושן (500ג)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מגש סלמון נורווגי מעושן (500ג)" data-price="112.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪91.00</div>
+        <img src="images/מגש גבינות (6 סוגים).avif" alt="" class="menu-img">
+        <h5>מגש גבינות (6 סוגים)</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מגש גבינות (6 סוגים)" data-price="91.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪84.00</div>
+        <img src="images/מגש סלטים ואנטיפסטי.avif" alt="" class="menu-img">
+        <h5>מגש סלטים ואנטיפסטי</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מגש סלטים ואנטיפסטי" data-price="84.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪84.00</div>
+        <img src="images/מגש עלי גפן (25 יח).avif" alt="" class="menu-img">
+        <h5>מגש עלי גפן (25 יח')</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מגש עלי גפן (25 יח')" data-price="84.00">הוסף לעגלה</button>
+    </div>
+</div>
+
+<div class="menu-category" id="drinks">
+    <h3><i class="fas fa-glass-water me-2"></i>שתייה</h3>
+    <div class="menu-item">
+        <div class="price">₪11.00</div>
+        <img src="images/פחית קולה.avif" alt="" class="menu-img">
+        <h5>פחית קולה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פחית קולה" data-price="11.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪11.00</div>
+        <img src="images/פחית זירו.avif" alt="" class="menu-img">
+        <h5>פחית זירו</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פחית זירו" data-price="11.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪11.00</div>
+        <img src="images/פחית פאנטה.avif" alt="" class="menu-img">
+        <h5>פחית פאנטה</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פחית פאנטה" data-price="11.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪11.00</div>
+        <img src="images/פחית פאנטה ענבים 330 מ״ל.avif" alt="" class="menu-img">
+        <h5>פחית פאנטה ענבים 330 מ״ל</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פחית פאנטה ענבים 330 מ״ל" data-price="11.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪11.00</div>
+        <img src="images/פחית ספרייט 330 מ״ל.jpg" alt="" class="menu-img">
+        <h5>פחית ספרייט 330 מ״ל</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פחית ספרייט 330 מ״ל" data-price="11.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪12.00</div>
+        <img src="images/פיוז טי אפרסק.avif" alt="" class="menu-img">
+        <h5>פיוז טי</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="פיוז טי" data-price="12.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪12.00</div>
+        <img src="images/מים בטעם ענבים.avif" alt="" class="menu-img">
+        <h5>מים בטעם</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מים בטעם" data-price="12.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪10.00</div>
+        <img src="images/סודה NORDIC.avif" alt="" class="menu-img">
+        <h5>סודה NORDIC</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="סודה NORDIC" data-price="10.00">הוסף לעגלה</button>
+    </div>
+    <div class="menu-item">
+        <div class="price">₪9.00</div>
+        <img src="images/מים מינרלים.avif" alt="" class="menu-img">
+        <h5>מים מינרלים</h5>
+        <button class="btn btn-primary btn-sm add-to-cart" data-name="מים מינרלים" data-price="9.00">הוסף לעגלה</button>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-utensils me-2"></i>כרמלי'ס בייגלס</h4>
+                    <p>בייגלים טריים, סלטים בריאים וכריכים טעימים - משלוח עד הבית!</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/972503330348" class="me-3" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>קישורים מהירים</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">בית</a></li>
+                        <li><a href="index.html#featured">מומלץ</a></li>
+                        <li><a href="#menu">תפריט מלא</a></li>
+                        <li><a href="index.html#about">אודות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>שירות לקוחות</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#contact">צור קשר</a></li>
+                        <li><a href="#">שאלות נפוצות</a></li>
+                        <li><a href="#">מדיניות משלוחים</a></li>
+                        <li><a href="#">תנאי שימוש</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>פרטי התקשרות</h4>
+                    <p><i class="fas fa-phone me-2"></i>03-1234567</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@carmelis.co.il</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>רחוב הרצל 123, תל אביב</p>
+                    <p><i class="fas fa-clock me-2"></i>א'-ה' 7:00-22:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 כרמלי'ס בייגלס. כל הזכויות שמורות. | אתר זה נבנה באהבה 🚚</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972503330348" class="whatsapp-float" target="_blank" aria-label="צור קשר בוואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
