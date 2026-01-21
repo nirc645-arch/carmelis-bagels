@@ -317,13 +317,20 @@ function filterMenuItems(filter) {
         const items = category.querySelectorAll('.menu-item');
 
         if (filter === 'all' || categoryId === filter) {
-            category.style.display = 'block';
+            category.style.visibility = 'visible';
+            category.style.opacity = '1';
             items.forEach(item => {
-                item.style.display = 'block';
+                item.style.visibility = 'visible';
+                item.style.opacity = '1';
                 animateItem(item);
             });
         } else {
-            category.style.display = 'none';
+            category.style.visibility = 'hidden';
+            category.style.opacity = '0';
+            items.forEach(item => {
+                item.style.visibility = 'hidden';
+                item.style.opacity = '0';
+            });
         }
     });
 }
