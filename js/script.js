@@ -60,14 +60,24 @@ function initializeCart() {
     // Cart modal
     const cartModal = document.getElementById('cartModal');
     if (cartModal) {
-        cartModal.addEventListener('show.bs.modal', function() {
-            renderCart();
-        });
+        // Remove existing modal show listener if it exists
+        cartModal.removeEventListener('show.bs.modal', cartModal._modalShowHandler);
 
-        // Continue shopping button handler
+        // Create and store the modal show handler
+        cartModal._modalShowHandler = function() {
+            renderCart();
+        };
+
+        cartModal.addEventListener('show.bs.modal', cartModal._modalShowHandler);
+
+        // Continue shopping button handler - prevent duplicate event listeners
         const continueShoppingBtn = cartModal.querySelector('.btn-secondary[data-bs-dismiss="modal"]');
         if (continueShoppingBtn) {
-            continueShoppingBtn.addEventListener('click', function() {
+            // Remove existing event listener if it exists
+            continueShoppingBtn.removeEventListener('click', continueShoppingBtn._continueShoppingHandler);
+
+            // Create and store the continue shopping handler
+            continueShoppingBtn._continueShoppingHandler = function() {
                 // Close modal using Bootstrap API
                 const modal = bootstrap.Modal.getInstance(cartModal);
                 if (modal) {
@@ -82,7 +92,9 @@ function initializeCart() {
                         backdrop.remove();
                     }
                 }
-            });
+            };
+
+            continueShoppingBtn.addEventListener('click', continueShoppingBtn._continueShoppingHandler);
         }
     }
 
@@ -228,20 +240,32 @@ function renderCart() {
         `;
     }
 
-    // Add event listeners for quantity buttons and delete buttons
+    // Add event listeners for quantity buttons and delete buttons - prevent duplicates
     document.querySelectorAll('.quantity-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        // Remove existing event listener if it exists
+        button.removeEventListener('click', button._quantityClickHandler);
+
+        // Create and store the quantity handler
+        button._quantityClickHandler = function() {
             const index = parseInt(this.getAttribute('data-index'));
             const action = this.getAttribute('data-action');
             updateQuantity(index, action);
-        });
+        };
+
+        button.addEventListener('click', button._quantityClickHandler);
     });
 
     document.querySelectorAll('.delete-item').forEach(button => {
-        button.addEventListener('click', function() {
+        // Remove existing event listener if it exists
+        button.removeEventListener('click', button._deleteClickHandler);
+
+        // Create and store the delete handler
+        button._deleteClickHandler = function() {
             const index = parseInt(this.getAttribute('data-index'));
             removeFromCart(index);
-        });
+        };
+
+        button.addEventListener('click', button._deleteClickHandler);
     });
 }
 
