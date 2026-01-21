@@ -74,8 +74,8 @@ function initializeCart() {
         cartModal.addEventListener('click', function(e) {
             const target = e.target;
 
-            // Handle continue shopping button
-            if (target.matches('.btn-secondary[data-bs-dismiss="modal"]')) {
+            // Handle close button (X) and continue shopping button
+            if (target.matches('.btn-close[data-bs-dismiss="modal"]') || target.matches('.btn-secondary[data-bs-dismiss="modal"]')) {
                 const modal = bootstrap.Modal.getInstance(cartModal);
                 if (modal) {
                     modal.hide();
