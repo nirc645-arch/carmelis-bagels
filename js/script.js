@@ -314,23 +314,16 @@ function filterMenuItems(filter) {
 
     menuCategories.forEach(category => {
         const categoryId = category.id;
-        const items = category.querySelectorAll('.menu-item');
 
         if (filter === 'all' || categoryId === filter) {
-            category.style.visibility = 'visible';
-            category.style.opacity = '1';
+            category.style.display = 'block';
+            const items = category.querySelectorAll('.menu-item');
             items.forEach(item => {
-                item.style.visibility = 'visible';
-                item.style.opacity = '1';
+                item.style.display = 'block';
                 animateItem(item);
             });
         } else {
-            category.style.visibility = 'hidden';
-            category.style.opacity = '0';
-            items.forEach(item => {
-                item.style.visibility = 'hidden';
-                item.style.opacity = '0';
-            });
+            category.style.display = 'none';
         }
     });
 }
