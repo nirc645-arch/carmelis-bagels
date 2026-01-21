@@ -57,7 +57,7 @@ function initializeCart() {
         button.addEventListener('click', button._cartClickHandler);
     });
 
-    // Cart modal
+    // Cart modal - use event delegation for better performance
     const cartModal = document.getElementById('cartModal');
     if (cartModal) {
         // Remove existing modal show listener if it exists
@@ -70,15 +70,12 @@ function initializeCart() {
 
         cartModal.addEventListener('show.bs.modal', cartModal._modalShowHandler);
 
-        // Continue shopping button handler - prevent duplicate event listeners
-        const continueShoppingBtn = cartModal.querySelector('.btn-secondary[data-bs-dismiss="modal"]');
-        if (continueShoppingBtn) {
-            // Remove existing event listener if it exists
-            continueShoppingBtn.removeEventListener('click', continueShoppingBtn._continueShoppingHandler);
+        // Use event delegation for all cart modal buttons
+        cartModal.addEventListener('click', function(e) {
+            const target = e.target;
 
-            // Create and store the continue shopping handler
-            continueShoppingBtn._continueShoppingHandler = function() {
-                // Close modal using Bootstrap API
+            // Handle continue shopping button
+            if (target.matches('.btn-secondary[data-bs-dismiss="modal"]')) {
                 const modal = bootstrap.Modal.getInstance(cartModal);
                 if (modal) {
                     modal.hide();
@@ -92,10 +89,21 @@ function initializeCart() {
                         backdrop.remove();
                     }
                 }
-            };
+            }
 
-            continueShoppingBtn.addEventListener('click', continueShoppingBtn._continueShoppingHandler);
-        }
+            // Handle quantity buttons
+            if (target.matches('.quantity-btn')) {
+                const index = parseInt(target.getAttribute('data-index'));
+                const action = target.getAttribute('data-action');
+                updateQuantity(index, action);
+            }
+
+            // Handle delete buttons
+            if (target.matches('.delete-item')) {
+                const index = parseInt(target.getAttribute('data-index'));
+                removeFromCart(index);
+            }
+        });
     }
 
     // Cart click handler
@@ -240,33 +248,7 @@ function renderCart() {
         `;
     }
 
-    // Add event listeners for quantity buttons and delete buttons - prevent duplicates
-    document.querySelectorAll('.quantity-btn').forEach(button => {
-        // Remove existing event listener if it exists
-        button.removeEventListener('click', button._quantityClickHandler);
-
-        // Create and store the quantity handler
-        button._quantityClickHandler = function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            const action = this.getAttribute('data-action');
-            updateQuantity(index, action);
-        };
-
-        button.addEventListener('click', button._quantityClickHandler);
-    });
-
-    document.querySelectorAll('.delete-item').forEach(button => {
-        // Remove existing event listener if it exists
-        button.removeEventListener('click', button._deleteClickHandler);
-
-        // Create and store the delete handler
-        button._deleteClickHandler = function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            removeFromCart(index);
-        };
-
-        button.addEventListener('click', button._deleteClickHandler);
-    });
+    // Event listeners are now handled by event delegation on the cart modal
 }
 
 function updateQuantity(index, action) {
