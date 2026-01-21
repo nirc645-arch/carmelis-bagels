@@ -42,13 +42,19 @@ function initializeCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     updateCartCount();
 
-    // Add to cart buttons
+    // Add to cart buttons - prevent duplicate event listeners
     document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
+        // Remove existing event listener if it exists
+        button.removeEventListener('click', button._cartClickHandler);
+
+        // Create and store the event handler
+        button._cartClickHandler = function() {
             const name = this.getAttribute('data-name');
             const price = parseFloat(this.getAttribute('data-price'));
             addToCart(name, price, this);
-        });
+        };
+
+        button.addEventListener('click', button._cartClickHandler);
     });
 
     // Cart modal
@@ -92,6 +98,9 @@ function initializeCart() {
 }
 
 function addToCart(name, price, button) {
+    // Prevent multiple rapid clicks
+    if (button && button.disabled) return;
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existing = cart.find(item => item.name === name);
 
@@ -107,13 +116,15 @@ function addToCart(name, price, button) {
     // Success animation and feedback
     showNotification(`${name} נוסף לעגלה!`, 'success');
 
-    // Button animation
+    // Button animation - disable during animation to prevent multiple clicks
     if (button) {
+        button.disabled = true;
         button.classList.add('clicked');
         button.innerHTML = '<i class="fas fa-check me-2"></i>נוסף!';
         setTimeout(() => {
             button.classList.remove('clicked');
             button.innerHTML = '<i class="fas fa-cart-plus me-2"></i>הוסף לעגלה';
+            button.disabled = false;
         }, 1000);
     }
 
