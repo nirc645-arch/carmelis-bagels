@@ -785,64 +785,66 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Mobile scaling - Keep desktop layout but scale everything down */
+/* Mobile optimization - Compact layout similar to desktop but smaller */
 @media (max-width: 767.98px) {
-    /* Global mobile scaling */
+    /* Keep readable font sizes but slightly smaller */
     body {
-        font-size: 14px;
+        font-size: 16px;
     }
 
-    /* Navigation scaling */
+    /* Compact navigation */
     .navbar-brand {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .navbar-logo {
-        height: 50px;
+        height: 45px;
     }
 
-    /* Hero section scaling */
+    /* Compact hero section */
     .hero {
-        padding: 20px 0;
-        min-height: 60vh;
+        padding: 30px 0;
+        min-height: 50vh;
     }
 
     .hero h1 {
-        font-size: 2.2rem;
-        margin-bottom: 0.8rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
 
     .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Compact buttons */
+    .btn-primary, .btn-outline-light {
+        padding: 12px 30px;
         font-size: 1rem;
-        margin-bottom: 1.5rem;
     }
 
-    .btn-primary {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
-
-    .btn-outline-light {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
-
-    /* Featured section scaling */
+    /* Compact featured section */
     .featured-section {
-        padding: 40px 0;
+        padding: 50px 0;
     }
 
     .section-title h2 {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
+        font-size: 2rem;
+        margin-bottom: 40px;
     }
 
-    .featured-card {
-        margin-bottom: 20px;
+    /* Change featured grid to 2 columns on mobile for better space usage */
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .featured-card img {
-        height: 160px;
+        height: 120px;
+    }
+
+    .featured-card .card-body {
+        padding: 15px;
     }
 
     .featured-card h5 {
@@ -851,75 +853,67 @@ footer {
     }
 
     .featured-card p {
-        font-size: 0.8rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
     }
 
     .featured-card .price {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .featured-card .btn {
-        padding: 8px 16px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        font-size: 0.9rem;
     }
 
-    /* Menu section scaling */
+    /* Compact menu section */
     .menu-section {
-        padding: 40px 0;
+        padding: 50px 0;
+    }
+
+    /* Change menu grid to 2 columns on mobile */
+    .menu-category {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
     .menu-category h3 {
-        font-size: 1.1rem;
-        padding: 10px 15px;
-        margin-bottom: 15px;
+        font-size: 1.2rem;
+        padding: 12px 18px;
+        margin-bottom: 18px;
     }
 
-    .menu-item {
-        margin-bottom: 15px;
-    }
-
-    .menu-item img {
-        height: 140px;
+    .menu-item .card-body {
+        padding: 15px;
     }
 
     .menu-item h5 {
-        font-size: 0.9rem;
-        margin-bottom: 6px;
+        font-size: 1rem;
+        margin-bottom: 8px;
     }
 
     .menu-item p {
-        font-size: 0.75rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
     }
 
     .menu-item .price {
-        font-size: 1rem;
-        margin-bottom: 10px;
+        font-size: 1.2rem;
+        margin-bottom: 12px;
     }
 
     .add-to-cart {
-        padding: 8px 12px;
-        font-size: 0.8rem;
+        padding: 10px 14px;
+        font-size: 0.9rem;
     }
 
-    /* Footer scaling */
+    /* Compact footer */
     footer {
-        padding: 30px 0 15px;
+        padding: 40px 0 20px;
     }
 
     .footer-content {
-        gap: 25px;
-    }
-
-    .footer-section h4 {
-        font-size: 1rem;
-        margin-bottom: 15px;
-    }
-
-    .footer-section p,
-    .footer-section a {
-        font-size: 0.85rem;
+        gap: 30px;
     }
 
     /* Container padding for mobile */
@@ -928,39 +922,28 @@ footer {
         padding-right: 15px;
     }
 
-    /* Modal scaling */
+    /* Compact modal */
     .modal-dialog {
-        margin: 10px;
+        margin: 20px;
+        max-width: calc(100vw - 40px);
     }
 
     .modal-content {
-        border-radius: 10px;
+        border-radius: 12px;
     }
 
     .modal-header {
-        padding: 15px;
-    }
-
-    .modal-body {
         padding: 20px;
     }
 
-    .cart-item h6 {
-        font-size: 0.9rem;
+    .modal-body {
+        padding: 25px;
     }
 
-    .cart-item p {
-        font-size: 0.8rem;
-    }
-
-    .cart-total {
-        font-size: 1.1rem;
-    }
-
-    /* Notification scaling */
+    /* Compact notifications */
     .notification-content {
-        padding: 12px 15px;
-        font-size: 0.9rem;
+        padding: 15px 18px;
+        font-size: 0.95rem;
     }
 }
 
