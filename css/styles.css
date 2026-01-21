@@ -683,6 +683,21 @@ html {
     height: 300px;
 }
 
+/* Filtered menu items - preserve grid layout */
+.filtered-out {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.filtered-out.menu-category {
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 0;
+}
+
 /* Animations */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
