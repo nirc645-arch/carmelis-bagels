@@ -42,27 +42,40 @@ function initializeCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     updateCartCount();
 
-    // Add to cart buttons
+    // Add to cart buttons - prevent duplicate event listeners
     document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
+        // Remove existing event listener if it exists
+        button.removeEventListener('click', button._cartClickHandler);
+
+        // Create and store the event handler
+        button._cartClickHandler = function() {
             const name = this.getAttribute('data-name');
             const price = parseFloat(this.getAttribute('data-price'));
             addToCart(name, price, this);
-        });
+        };
+
+        button.addEventListener('click', button._cartClickHandler);
     });
 
-    // Cart modal
+    // Cart modal - use event delegation for better performance
     const cartModal = document.getElementById('cartModal');
     if (cartModal) {
-        cartModal.addEventListener('show.bs.modal', function() {
-            renderCart();
-        });
+        // Remove existing modal show listener if it exists
+        cartModal.removeEventListener('show.bs.modal', cartModal._modalShowHandler);
 
-        // Continue shopping button handler
-        const continueShoppingBtn = cartModal.querySelector('.btn-secondary[data-bs-dismiss="modal"]');
-        if (continueShoppingBtn) {
-            continueShoppingBtn.addEventListener('click', function() {
-                // Close modal using Bootstrap API
+        // Create and store the modal show handler
+        cartModal._modalShowHandler = function() {
+            renderCart();
+        };
+
+        cartModal.addEventListener('show.bs.modal', cartModal._modalShowHandler);
+
+        // Use event delegation for all cart modal buttons
+        cartModal.addEventListener('click', function(e) {
+            const target = e.target;
+
+            // Handle close button (X) and continue shopping button
+            if (target.matches('.btn-close[data-bs-dismiss="modal"]') || target.matches('.btn-secondary[data-bs-dismiss="modal"]')) {
                 const modal = bootstrap.Modal.getInstance(cartModal);
                 if (modal) {
                     modal.hide();
@@ -76,8 +89,21 @@ function initializeCart() {
                         backdrop.remove();
                     }
                 }
-            });
-        }
+            }
+
+            // Handle quantity buttons
+            if (target.matches('.quantity-btn')) {
+                const index = parseInt(target.getAttribute('data-index'));
+                const action = target.getAttribute('data-action');
+                updateQuantity(index, action);
+            }
+
+            // Handle delete buttons
+            if (target.matches('.delete-item')) {
+                const index = parseInt(target.getAttribute('data-index'));
+                removeFromCart(index);
+            }
+        });
     }
 
     // Cart click handler
@@ -92,6 +118,9 @@ function initializeCart() {
 }
 
 function addToCart(name, price, button) {
+    // Prevent multiple rapid clicks
+    if (button && button.disabled) return;
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existing = cart.find(item => item.name === name);
 
@@ -107,13 +136,15 @@ function addToCart(name, price, button) {
     // Success animation and feedback
     showNotification(`${name} נוסף לעגלה!`, 'success');
 
-    // Button animation
+    // Button animation - disable during animation to prevent multiple clicks
     if (button) {
+        button.disabled = true;
         button.classList.add('clicked');
         button.innerHTML = '<i class="fas fa-check me-2"></i>נוסף!';
         setTimeout(() => {
             button.classList.remove('clicked');
             button.innerHTML = '<i class="fas fa-cart-plus me-2"></i>הוסף לעגלה';
+            button.disabled = false;
         }, 1000);
     }
 
@@ -217,21 +248,7 @@ function renderCart() {
         `;
     }
 
-    // Add event listeners for quantity buttons and delete buttons
-    document.querySelectorAll('.quantity-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            const action = this.getAttribute('data-action');
-            updateQuantity(index, action);
-        });
-    });
-
-    document.querySelectorAll('.delete-item').forEach(button => {
-        button.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            removeFromCart(index);
-        });
-    });
+    // Event listeners are now handled by event delegation on the cart modal
 }
 
 function updateQuantity(index, action) {
@@ -297,12 +314,12 @@ function filterMenuItems(filter) {
 
     menuCategories.forEach(category => {
         const categoryId = category.id;
-        const items = category.querySelectorAll('.menu-item');
 
         if (filter === 'all' || categoryId === filter) {
-            category.style.display = '';
+            category.style.display = 'block';
+            const items = category.querySelectorAll('.menu-item');
             items.forEach(item => {
-                item.style.display = '';
+                item.style.display = 'block';
                 animateItem(item);
             });
         } else {
@@ -312,15 +329,16 @@ function filterMenuItems(filter) {
 }
 
 function searchMenuItems(searchTerm) {
+    const menuItems = document.querySelectorAll('.menu-item');
     const menuCategories = document.querySelectorAll('.menu-category');
 
     if (searchTerm === '') {
         // Show all items
         menuCategories.forEach(category => {
-            category.style.display = '';
+            category.style.display = 'block';
             const items = category.querySelectorAll('.menu-item');
             items.forEach(item => {
-                item.style.display = '';
+                item.style.display = 'block';
                 animateItem(item);
             });
         });
@@ -336,7 +354,7 @@ function searchMenuItems(searchTerm) {
             const itemDescription = item.querySelector('p') ? item.querySelector('p').textContent.toLowerCase() : '';
 
             if (itemName.includes(searchTerm) || itemDescription.includes(searchTerm)) {
-                item.style.display = '';
+                item.style.display = 'block';
                 animateItem(item);
                 hasVisibleItems = true;
             } else {
@@ -344,7 +362,7 @@ function searchMenuItems(searchTerm) {
             }
         });
 
-        category.style.display = hasVisibleItems ? '' : 'none';
+        category.style.display = hasVisibleItems ? 'block' : 'none';
     });
 }
 
